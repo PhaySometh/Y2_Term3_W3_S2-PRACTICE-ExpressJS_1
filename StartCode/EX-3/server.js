@@ -10,10 +10,10 @@ const app = express();
 const PORT = 3000;
 
 app.use(logger);
-// app.use(auth);
+app.use(auth);
 
 // Route: GET /departments/:dept/courses
-app.get('/departments/:dept/courses', validateQuery, (req, res) => {
+app.get('/departments/:dept/courses', auth, validateQuery, (req, res) => {
     const { dept } = req.params;
     const { level, minCredits, maxCredits, semester, instructor } = req.query;
 
